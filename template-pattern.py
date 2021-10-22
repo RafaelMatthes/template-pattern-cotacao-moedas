@@ -34,7 +34,7 @@ class AbstractCurrencyGetter(object, metaclass=abc.ABCMeta):
                 valor = json.loads(json.dumps(xmltodict.parse(page.content)))
                 self.__valor = f'{self.__curreny_name} , {self.__day}-{self.__month}-{self.__year}' , "%.4f" %(1 / float(valor['valor-convertido']))
             else:
-                raise ValueError('A cotação desta moeda ainda não está disponivel no Banco Central')
+                raise ValueError(self.__curreny_name,' A cotação desta moeda ainda não está disponivel no Banco Central')
             
             return self.__valor
             
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     
     teste_dolar = Dolar('2021','10','21')
     teste_euro = Euro('2021','10','21')
-    teste_cad = DolarCanadense('2021','10','21')
+    teste_cad = DolarCanadense('2023','10','23')
     
     print(teste_dolar.get_value())
     print(teste_euro.get_value())
